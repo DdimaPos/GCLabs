@@ -1,12 +1,3 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-
-// Additive Wave
-// Create a more complex wave by adding two waves together. 
-
-// Maybe better for this answer to be OOP???
- 
 int xspacing = 8;   // How far apart should each horizontal position be spaced
 int w;              // Width of entire wave
 int maxwaves = 5;   // total # of waves to add together

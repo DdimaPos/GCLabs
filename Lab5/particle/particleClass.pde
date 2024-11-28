@@ -1,9 +1,3 @@
-// The Nature of Code
-// Daniel Shiffman
-// http://natureofcode.com
-
-// Simple Particle System
-
 class Particle {
   PVector position;
   PVector velocity;
