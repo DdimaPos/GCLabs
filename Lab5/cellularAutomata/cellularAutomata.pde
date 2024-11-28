@@ -13,7 +13,6 @@ void draw() {
   gol.display();
 }
 
-// reset board when mouse is pressed
-void mousePressed() {
-  gol.init();
+void mouseDragged() {
+  gol.setCellAlive(mouseX, mouseY);
 }

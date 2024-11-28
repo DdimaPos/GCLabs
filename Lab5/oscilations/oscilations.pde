@@ -22,7 +22,7 @@ void setup() {
 }
 
 void draw() {
-  background(0);
+  background(45, 65, 214);
   calcWave();
   renderWave();
 }
@@ -54,6 +54,6 @@ void renderWave() {
   fill(255,50);
   ellipseMode(CENTER);
   for (int x = 0; x < yvalues.length; x++) {
-    ellipse(x*xspacing,height/2+yvalues[x],16,16);
+    ellipse(x*xspacing,height/2+yvalues[x],16,16); // y values can be negative or positive
   }
 }

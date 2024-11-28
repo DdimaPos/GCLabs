@@ -1,7 +1,7 @@
 float theta;   
 
 void setup() {
-  size(500, 400);
+  size(1000, 800);
   smooth();
 }
 
@@ -12,8 +12,8 @@ void draw() {
 
   // Start the tree from the bottom of the screen
   translate(width/2, height);
-  stroke(0);
-  branch(100);
+  stroke(23, 148, 9);
+  branch(180);
 }
 
 void branch(float len) {

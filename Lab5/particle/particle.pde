@@ -6,7 +6,7 @@ void setup() {
 }
 
 void draw() {
-  background(255);
+  background(193, 199, 245);
   
   // Option #1 (move the Particle System origin)
   ps.origin.set(mouseX,mouseY,0);
