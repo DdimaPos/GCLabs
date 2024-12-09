@@ -13,10 +13,10 @@ void draw() {
 
   //lighting
   ambientLight(100, 100, 100);
-  ambient(blue)
+  ambient(#0886AF);
   pointLight(255, 255, 255, width / 2, height / 2, 200); 
 
-  // Center the scene
+  //center the scene
   translate(width / 2, height / 2 + 100, 0);
   rotateX(angleX); 
   rotateY(angleY);
@@ -58,7 +58,6 @@ void draw() {
       popMatrix();
     }
   }
-
  
   if (mousePressed) {
     angleX = map(mouseY, 0, -height, -PI, PI);
