@@ -8,13 +8,13 @@ Box2DProcessing box2d;
 ArrayList<DropBack> dList; 
 ArrayList<Drop> drops; 
 ArrayList<Umbrella> umbrellas; 
-Surface s; 
+//Surface s; 
 UmbrellaBack u; 
 void setup(){
   box2d = new Box2DProcessing(this); //initialize and create Box2D world 
   box2d.createWorld(); 
   box2d.listenForCollisions();
-  size(1200, 600); 
+  size(1000, 500); 
   drops = new ArrayList<Drop>(); 
   dList = new ArrayList<DropBack>(); 
   umbrellas = new ArrayList<Umbrella>(); 

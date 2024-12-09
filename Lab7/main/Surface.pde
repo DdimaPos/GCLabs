@@ -1,4 +1,4 @@
-class Surface{
+/*class Surface{
     ArrayList<Vec2> surface; 
     
     Surface(){
@@ -29,4 +29,4 @@ class Surface{
     }
     endShape();
   }
-}
+}*/
