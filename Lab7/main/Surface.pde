@@ -1,4 +1,4 @@
-/*class Surface{
+class Surface{
     ArrayList<Vec2> surface; 
     
     Surface(){
@@ -12,10 +12,10 @@
       for (int i = 0; i < vertices.length; i++) {//Convert each vertex to Box2D World coordinates.
         vertices[i] = box2d.coordPixelsToWorld(surface.get(i));
       }
-      chain.createChain(vertices, vertices.length);
+      chain.createChain(vertices, vertices.length); //create chain of points 
       BodyDef bd = new BodyDef();
-      Body body = box2d.world.createBody(bd);
-      body.createFixture(chain, 1);        
+      Body body = box2d.world.createBody(bd);//create the body
+      body.createFixture(chain, 1);        //define it's box
   }
   void display(){
     strokeWeight(1);
@@ -29,4 +29,4 @@
     }
     endShape();
   }
-}*/
+}

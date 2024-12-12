@@ -9,15 +9,14 @@ class Umbrella{
     this.randColor = randColor; 
     bd = new BodyDef(); //build body 
     bd.type = BodyType.DYNAMIC; 
-    bd.position.set(box2d.coordPixelsToWorld(mouseX, mouseY));
+    bd.position.set(box2d.coordPixelsToWorld(mouseX, mouseY)); //track the cursor position
     body = box2d.createBody(bd);
     
     PolygonShape ps = new PolygonShape(); // build shape 
     float box2dW =  box2d.scalarPixelsToWorld(80/2); //5/2
     float box2dH = box2d.scalarPixelsToWorld(80/2);
-    ps.setAsBox(box2dW, box2dH);    
+    ps.setAsBox(box2dW, box2dH);  //create the box that will collide  
     
-    //body.setLinearVelocity(new Vec2(0, 0)); 
     body.setAngularVelocity(random(-1.5, 1.5)); 
     
    CircleShape cs = new CircleShape(); 
@@ -36,9 +35,8 @@ class Umbrella{
     
      fill(randColor[0], randColor[1], randColor[2]);
      arc(0, 0, 100, 80, PI, 2*PI);
-     rect(-4, 0, 5, 80);
+     rect(-4, 0, 5, 40);//handle
      noFill(); 
-    // stroke(#54dfe8);
     stroke(randColor[0], randColor[1], 200);
      strokeWeight(5); 
      arc(-13, 33, 20, 20, 0, PI);
@@ -52,3 +50,4 @@ class Umbrella{
      noFill(); 
   } 
 }
+

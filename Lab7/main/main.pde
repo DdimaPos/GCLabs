@@ -6,20 +6,18 @@ import java.util.Iterator;
 import org.jbox2d.dynamics.contacts.Contact;
 Box2DProcessing box2d; 
 ArrayList<DropBack> dList; 
-ArrayList<Drop> drops; 
 ArrayList<Umbrella> umbrellas; 
-//Surface s; 
+Surface s; //surface
 UmbrellaBack u; 
 void setup(){
   box2d = new Box2DProcessing(this); //initialize and create Box2D world 
   box2d.createWorld(); 
   box2d.listenForCollisions();
   size(1000, 500); 
-  drops = new ArrayList<Drop>(); 
   dList = new ArrayList<DropBack>(); 
   umbrellas = new ArrayList<Umbrella>(); 
-  //s = new Surface(); 
-    u = new UmbrellaBack(new PVector(width/2, height/2)); 
+  s = new Surface();// declare the surface 
+  u = new UmbrellaBack(new PVector(width/2, height/2)); 
 }
 
 void draw(){
@@ -28,11 +26,11 @@ void draw(){
   background(#EDFFFF);
   
     u.run(); 
-  //Background drops  =======================
+  //Background drops  -----------  each dList has own drops
   dList.add(new DropBack(new PVector(random(-10, width), -40), new PVector(0, random(1, 2)), 50, false));
   dList.add(new DropBack(new PVector(random(-10, width), -40), new PVector(0, random(3, 4)), 100, true));
   dList.add(new DropBack(new PVector(random(-10, width), -40), new PVector(0, random(4, 5)), 200, true));
-    dList.add(new DropBack(new PVector(random(-10, width), -40), new PVector(0, random(6, 7)), 255, true));
+  dList.add(new DropBack(new PVector(random(-10, width), -40), new PVector(0, random(6, 7)), 255, true));
   Iterator<DropBack> it = dList.iterator();
    while(it.hasNext()){
       DropBack d = it.next(); 
@@ -50,28 +48,18 @@ void draw(){
          d.acceleration = new PVector(.01, .1); 
       }
   }
-  // End background drops =======================
+  // End background drops -----------------
   
-  drops.add(new Drop()); 
-  Iterator<Drop> it2 = drops.iterator();
-   while(it2.hasNext()){
-    Drop d = it2.next(); 
-    d.display(); 
-    if(box2d.getBodyPixelCoord(d.body).y > height){
-      it2.remove(); 
-    }
-  }
-
+  //draw the umbrellas
   Iterator<Umbrella> it3 = umbrellas.iterator();
    while(it3.hasNext()){
     Umbrella b = it3.next(); 
     b.display(); 
-    if(box2d.getBodyPixelCoord(b.body).y > height+20){
+    if(box2d.getBodyPixelCoord(b.canopyBody).y > height+20){
       it3.remove(); 
     }
   }
 }
-
 void mouseReleased(){
     Umbrella u = new Umbrella(colorPicker()); 
     umbrellas.add(u); 
@@ -87,24 +75,13 @@ void beginContact(Contact cp){
     if((Object)b1.getUserData()==null || (Object)b2.getUserData() == null){
       return; 
     }
-    if((Object)b1.getUserData().getClass()==Drop.class && (Object)b2.getUserData().getClass()==Drop.class){            
-      Object o1 = (Drop) b1.getUserData();
-      Object o2 = (Drop) b2.getUserData();
-      Drop d1 = (Drop) o1;
-      Drop d2 = (Drop) o2;
-      
-      d1.dying++; 
-      d2.dying++; 
-      d1.body.setLinearVelocity(new Vec2(random(-2, 2), random(-10, -12)));  
-      d2.body.setLinearVelocity(new Vec2(random(-2, 2), random(-10, -12))); 
-    }
-    
-    if((Object)b1.getUserData().getClass()==Drop.class && (Object)b2.getUserData().getClass()==Umbrella.class){            
+        //drop and umbrella collide
+    if((Object)b1.getUserData().getClass()==Drop.class && (Object)b2.getUserData().getClass()==Umbrella.class){ 
       Object o1 = (Drop) b1.getUserData();
       Object o2 = (Umbrella) b2.getUserData();
       Drop d1 = (Drop) o1;
       Umbrella d2 = (Umbrella) o2;
-     d1.dying++; 
+      d1.dying++; 
       d1.body.setLinearVelocity(new Vec2(random(-2, 2), random(-5, -6)));  
     }
  

@@ -51,9 +51,9 @@ class Drop{
     
   }
   
-  //void killBody(){
-  //  box2d.destroyBody(body); 
-  //}
+  void killBody(){
+    box2d.destroyBody(body); 
+  }
   
   float calcPosx(){
     return random(-10, width+10); 
